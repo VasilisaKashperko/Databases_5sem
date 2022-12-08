@@ -1,0 +1,59 @@
+------------------ Task 1 ------------------
+
+D:\app\OracleUser\product\12.1.0\dbhome_1\network\admin\sqlnet.ora
+D:\app\OracleUser\product\12.1.0\dbhome_1\network\admin\tnsnames.ora
+
+------------------ Task 2 | Перечень параметров экземпляра  ------------------
+
+system
+Pa$$w0rd
+
+show parameter instance
+
+------------------ Task 3 | Cписки ------------------
+
+connect system/Pa$$w0rd@localhost:1521/KVSPDB
+select * from v$pdbs;
+select * from v$tablespace;
+select * from dba_data_files;
+select * from all_users;
+select * from dba_role_privs;
+
+------------------ Task 4 | HKEY_LOCAL_MACHINE ------------------
+
+regedit
+
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Oracle
+
+------------------ Task 6 | Connect ------------------
+
+conn U1_KVS_PDB/Pa$$w0rd@KVSPDB
+
+------------------ Task 7 | Любой селект ------------------
+
+select * from KVS_TABLE;
+
+------------------ Task 8 | Timing ------------------
+help
+help timing
+set timing on;
+select * from KVS_TABLE;
+set timing off;
+
+------------------ Task 9 | Описание столбцов ------------------
+help describe
+describe KVS_TABLE;
+
+------------------ Task 10 | Все сегменты владельца ------------------
+conn system/Pa$$w0rd@KVSPDB
+select * from dba_segments where owner = 'U1_KVS_PDB';
+
+------------------ Task 11 | Количество сегментов, экстентов, блоков памяти и размер в килобайтах  ------------------
+
+conn sys/Pa$$w0rd@KVSPDB as sysdba
+create view EXTENTS as select extents, blocks, bytes from dba_segments;
+select * from EXTENTS;
+
+
+
+
