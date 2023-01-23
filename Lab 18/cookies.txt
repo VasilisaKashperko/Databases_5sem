@@ -1,0 +1,31 @@
+SQL> select * from Cookies;
+
+        ID NAME                       DATE                             
+---------- -------------------- ---------- ---------                            
+         1 RAPSODY                        6.2 23-JUN-95                            
+         2 SPRING                      1.63 12-NOV-93                            
+         3 NUTE                     9.24 18-APR-89                            
+         4 HIEO                     5.25 23-DEC-86                            
+         5 OREO                       4.59 12-DEC-64                            
+         6 COOLKID                      9.42 03-NOV-72                            
+         7 PESOCHNOE                    5.24 18-SEP-91                            
+         8 MARIA                  7.34 10-DEC-64                            
+         9 ANASTASYA                     2.23 02-JUL-84                            
+        10 VIKTORIA                     3.68 09-NOV-78                            
+        11 POTATO                   8.64 03-DEC-63                            
+
+        ID NAME                       DATE                             
+---------- -------------------- ---------- ---------                            
+        12 QWERTY                       8.35 30-JUN-57                            
+        13 ZXCVB                     5.23 10-OCT-64                            
+        14 ASDFG                      7.54 28-JUN-01                            
+        15 GLADISLAVE                      5.35 24-MAY-63                            
+        16 PUTIN                       4.45 22-NOV-52                            
+        17 VIRGIN                   7.35 03-OCT-82                            
+        18 HOE                   8.23 02-JUL-77                            
+        19 TOKIO                         6 25-NOV-68                            
+        20 ELIOT                       2 05-MAY-88                            
+
+20 rows selected.
+
+SQL> spool off;
