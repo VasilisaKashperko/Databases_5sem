@@ -1,0 +1,66 @@
+Вариант 1
+1. Получить список всех временных табличных пространств
+ select * from dba_tablespaces where contents='TEMPORARY'
+2. Получить список привилегий для роли sys
+ select * from dba_sys_privs where grantee='SYS' 
+select * from USER_sys_privs//если войти по sys 
+3. Получить список всех объектов, принадлежащих пользователю
+select * from user_OBJECTS
+4. Получить список файлов текущих журналов повтора
+select * from v$log where status = 'CURRENT';
+5. Получить последний архив журналов повтора
+select * from v$archived_log;
+6. Получить месторасположение файла параметров
+select * from v$patameter(?)
+7. Для всех таблиц. пользователя найти, в каком пуле буферного кэша
+select segment_name, segment_type, tablespace_name, buffer_pool 
+from dba_segments 
+8. Получить список пользователей, имеющих привилегию sysdba из файла паролей
+select * from v$pwfile_users where sysdba='TRUE'
+9. Получить размер гранулы в буферном кэше
+select * from v$sgainfo where name = 'Granule Size'
+select component,
+      current_size,
+      max_size,
+      granule_size from v$sga_dynamic_components where current_size>0 and component like '%buffer%';
+10. Получить список работающих в настоящее время фоновых процедур
+SELECT * FROM v$BGPROCESS where paddr != hextoraw('00');
+
+Вариант 2
+1. Показать все представления словаря, относящиеся к процессам
+SELECT * FROM dict where table_name like '%PROCESS%';
+2. Получить список файлов табличных пространств отката
+select * from dba_tablespaces where contents='UNDO'
+3. Получить список всех ролей
+select * from DBA_ROLES ;
+4. Получить размер данных в наибольшей таблице пользователя
+select pool, name, bytes 
+from v$sgastat 
+order by bytes desc fetch first 1 rows only;
+5. Получить размер блока данных двумя способами
+show parameter db_block_size;
+select distinct bytes/blocks from user_segments;
+6. Получить список параметров экземпляра
+select * from v$instance;
+7. Получить месторасположение файла журнала
+select * from v$logfile;
+8. Получить объем памяти, выделенный под объекты пользовательской корзины
+select component, current_size 
+from v$sga_dynamic_components 
+where component like '%RECYCLE%'
+9. Получить список действительных сервисов
+SELECT * FROM V$SERVICES;
+10. Получить список работающих в настоящее время серверных процессов.
+select * from v$process;
+
+Вариант 3
+1. select db_name from dba; (?)
+2. select * from DBA_PROFILES WHERE PROFILE = "DEFAULT";
+3. select * from user_segments;
+4. select segment_name from dba_extents where user = "user_name";
+5. select PDB_NAME from dba_pdbs;
+6. select * from v$logfile;
+7. SELECT * FROM V$PWFILE_USERS;
+8. select value from v$sga;
+9. select component, granule_size from v$sga_dynamic_components where current_size > 0;
+10. select * from v$session;
